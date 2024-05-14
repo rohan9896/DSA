@@ -29,6 +29,10 @@ class Maths {
     }
     
     public static int reverseNumber(long num) {
+
+        // TC - O(log10(n))
+        // SC - O(1)
+
         long reversedNum = reverseNumberHelper(num, 0);
         if(reversedNum > Integer.MAX_VALUE || reversedNum < Integer.MIN_VALUE) {
             return 0;
