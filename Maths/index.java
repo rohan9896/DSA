@@ -13,12 +13,12 @@ class Maths {
         return countDigitsHelper(num, 0);
     }
 
-    public static int reverseNumberHelper(int num, int reversedNum) {
+    public static long reverseNumberHelper(long num, long reversedNum) {
         if(num == 0) {
             return reversedNum;
         }
         
-        int lastDigit = num % 10;
+        long lastDigit = num % 10;
         
         num = num / 10;
         
@@ -28,8 +28,12 @@ class Maths {
         
     }
     
-    public static int reverseNumber(int num) {
-        return reverseNumberHelper(num, 0);
+    public static int reverseNumber(long num) {
+        long reversedNum = reverseNumberHelper(num, 0);
+        if(reversedNum > Integer.MAX_VALUE || reversedNum < Integer.MIN_VALUE) {
+            return 0;
+        }
+        return (int)reversedNum;
     }
     
 	public static void main(String[] args) {
