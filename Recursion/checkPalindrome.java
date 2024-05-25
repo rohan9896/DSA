@@ -14,8 +14,17 @@ class CheckPalindrome {
 
     }
 
+    public static boolean checkPalindromeHelper2(String str, int leftIndex, int rightIndex) {
+        if(leftIndex > rightIndex) {
+            return true;
+        }
+
+        return str.charAt(leftIndex) == str.charAt(rightIndex) && checkPalindromeHelper2(str, leftIndex + 1, rightIndex - 1);
+    }
+
     public static boolean checkPalindrome(String str) {
-        return checkPalindromeHelper(str, 0, str.length() - 1, false);
+        // return checkPalindromeHelper(str, 0, str.length() - 1, false);
+        return checkPalindromeHelper2(str, 0, str.length());
     }
 
     public static void main(String[] args) {
