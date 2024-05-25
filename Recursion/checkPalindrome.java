@@ -15,7 +15,7 @@ class CheckPalindrome {
     }
 
     public static boolean checkPalindrome(String str) {
-        return checkPalindromeHelper(str);
+        return checkPalindromeHelper(str, 0, str.length() - 1, false);
     }
 
     public static void main(String[] args) {
