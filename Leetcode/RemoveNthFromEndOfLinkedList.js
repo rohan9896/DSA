@@ -2,34 +2,40 @@ import LinkedList from "./linked_list.js";
 import LinkedListNode from "./linked_list_node.js";
 
 function removeNthLastNode(head, n) {
+    
+    // Step 1 - initialize leftPtr and rightPtr to be pointed at head node
+    // Step 2 - move rightPtr by n steps
+    // Step 3 - if rightPtr reaches at null, then the node to be removed is head, so we will simply return head.next
+    // Step 4 - Now move both leftPtr and rightPtr forward until rightPtr.next !== null
+    // Step 5 - By this step, leftPtr will be pointing at the node just before the node to be removed
+    // Step 6 - Now remove the node to be removed by leftPtr.next = leftPtr.next.next;
+    
+    let leftPtr = head;
+    let rightPtr = head;
 
-    // Replace this placeholder return statement with your code
-    
-    let left = head;
-    let right = head;
-    
     // Move right pointer n steps forward
-    let i=0;
-    while(i<n) {
+    while(n > 0) {
       
-      // if this condition is true, that means the node to be removed is head
-      if(right.next === null) {
-        head = head.next;
-        return head;
-      }
-      right = right.next;
-      i++;
+      rightPtr = rightPtr.next;
+      
+      n--;
     }
-    
+
+    // if this condition is true, that means the node to be removed is head
+    if(rightPtr === null) {
+      return head.next;
+    }
+
     // Move forward left and right until right reaches at the end
-    while(right.next !== null) {
-      left = left.next;
-      right = right.next;
+    while(rightPtr.next !== null) {
+      rightPtr = rightPtr.next;
+      leftPtr = leftPtr.next;
     }
-    
+
     // Now left pointer is at position just before the element to be removed
-    left.next = left.next.next;
-    
+    leftPtr.next = leftPtr.next.next;
+        
+        
     return head;  
 }
 
