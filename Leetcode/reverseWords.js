@@ -21,6 +21,25 @@ function reverseWordsUsingStack(sentence) {
     return reversedSentence.trim();
 }
 
+// 2 pointers - swapping words
+function reverseWords(s) {
+    const words = s.split(" ").filter(item => item);
+    
+    let left = 0;
+    let right = words.length - 1;
+
+    while(left <= right) {
+        const temp = words[left];
+        words[left] = words[right];
+        words[right] = temp;
+
+        left++;
+        right--;
+    }
+
+    return words.join(' ');
+}
+
 // Reverse words using 2 pointers
 function reverseWords(sentence) {
   let reversedSentenceArray = sentence.trim().replace(/\s+/g, " ").split('').reverse().filter(item => Boolean(item));
