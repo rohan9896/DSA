@@ -68,4 +68,8 @@ class WeightedAdjacencyList {
         }
     }
 
+    printGraph() {
+        console.log(this.map);
+    }
+
 }
