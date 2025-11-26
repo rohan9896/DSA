@@ -41,3 +41,31 @@ class UnweightedAdjacencyList {
     }
 
 }
+
+class WeightedAdjacencyList {
+
+    constructor(isDirected) {
+        this.map = {};
+        this.isDirected = isDirected;
+    }
+
+    addVertex(vertex) {
+        if (this.map[vertex]) {
+            return;
+        }
+
+        this.map[vertex] = [];
+    }
+
+    addEdge(from, to, weight) {
+        this.addVertex(from);
+        this.addVertex(to);
+
+        this.map[from].push({ vertex: to, weight: weight });
+
+        if (!this.isDirected) {
+            this.map[to].push({ vertex: from, weight: weight });
+        }
+    }
+
+}

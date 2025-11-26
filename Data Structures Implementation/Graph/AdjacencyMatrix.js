@@ -9,7 +9,7 @@
 
 
 
-class AdjacencyMatrix {
+class UnweightedAdjacencyMatrix {
 
     constructor(isDirected = false) {
         this.vertices = [];
@@ -45,6 +45,55 @@ class AdjacencyMatrix {
         if (!this.isDirected) {
             this.matrix[j][i] = 1;
         }
+    }
+
+    printGraph() {
+        console.log(`Vertices: ${this.vertices}, Matrix: ${this.matrix}`);
+    }
+
+}
+
+class WeightedAdjacencyMatrix {
+
+    constructor(isDirected = false) {
+        this.vertices = [];
+        this.matrix = [];
+
+        this.isDirected = isDirected;
+    }
+
+    addVertex(vertex) {
+
+        if (this.vertices.includes(vertex)) {
+            return;
+        }
+
+        this.vertices.push(vertex);
+
+        this.matrix.forEach(row => row.push(Infinity));
+
+        const newRow = new Array(this.vertices.length).fill(Infinity);
+
+        this.matrix.push(newRow);
+
+    }
+
+    addEdge(from, to, weight) {
+        this.addVertex(from);
+        this.addVertex(to);
+
+        const i = this.vertices.indexOf(from);
+        const j = this.vertices.indexOf(to);
+
+        this.matrix[i][j] = weight;
+
+        if (!this.isDirected) {
+            this.matrix[j][i] = weight;
+        }
+    }
+
+    printGraph() {
+        console.log(`Vertices: ${this.vertices}, Matrix: ${this.matrix}`);
     }
 
 }
